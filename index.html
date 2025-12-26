@@ -38,10 +38,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Unbounded:wght@200..900&display=swap"
-        rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MMVZH7ND');</script>
+    <!-- End Google Tag Manager -->
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -58,7 +68,7 @@
                         panel: '#0a0a0a',
                         surface: '#121212',
                         accent: '#6d28d9',
-                        neon: '#a78bfa',  
+                        neon: '#a78bfa',
                         success: '#10b981',
                         line: 'rgba(255, 255, 255, 0.06)'
                     },
@@ -146,6 +156,10 @@
 </head>
 
 <body class="selection:bg-accent selection:text-white overflow-x-hidden">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMVZH7ND"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div class="fixed inset-0 bg-grid-pattern bg-[size:50px_50px] pointer-events-none z-0"></div>
     <div
@@ -411,18 +425,18 @@
                                 <div class="font-mono text-xs text-gray-500 mb-2">INTERFACE LOGIC</div>
                                 <div class="space-y-2">
                                     <div class="h-2 bg-blue-900/30 rounded-full w-full overflow-hidden">
-                                        <div class="h-full bg-blue-500 w-3/4"></div>
+                                        <div class="h-full bg-blue-500 w-100"></div>
                                     </div>
                                     <div class="flex justify-between font-mono text-[10px] text-gray-400">
                                         <span>Backend Logic</span>
-                                        <span>75%</span>
+                                        <span>100%</span>
                                     </div>
                                     <div class="h-2 bg-green-900/30 rounded-full w-full overflow-hidden">
-                                        <div class="h-full bg-green-500 w-1/2"></div>
+                                        <div class="h-full bg-green-500 w-4/5"></div>
                                     </div>
                                     <div class="flex justify-between font-mono text-[10px] text-gray-400">
                                         <span>Frontend Reactivity</span>
-                                        <span>50%</span>
+                                        <span>80%</span>
                                     </div>
                                 </div>
                             </div>
