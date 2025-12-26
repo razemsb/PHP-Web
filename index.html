@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>razemsb | Backend Architect & PHP Systems Developer</title>
+    <meta name="description"
+        content="Портфолио бэкенд-архитектора razemsb. Проектирование высокопроизводительных PHP-систем, Laravel, VueJS 3 и чистая архитектура кода.">
+    <meta name="keywords"
+        content="backend architect, PHP developer, Laravel, VueJS 3, OOP, SOLID, Clean Architecture, разработка ПО, бэкенд разработчик">
+    <meta name="author" content="razemsb">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://razemsb.dev/">
+    <meta property="og:title" content="razemsb | Backend Architect">
+    <meta property="og:description"
+        content="Проектирую сложные PHP-системы, где чистота кода встречает высокую производительность.">
+    <meta property="og:image" content="./assets/images/og-preview.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="razemsb | Backend Architect">
+    <meta property="twitter:description"
+        content="Проектирую сложные PHP-системы, где чистота кода встречает высокую производительность.">
+    <meta property="twitter:image" content="./assets/images/og-preview.png">
+
+    <link rel="icon" type="image/png" href="./assets/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg" />
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="razemsb.dev" />
+    <link rel="manifest" href="./assets/images/site.webmanifest" />
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Unbounded:wght@200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Unbounded', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        void: '#050505',
+                        panel: '#0a0a0a',
+                        surface: '#121212',
+                        accent: '#6d28d9',
+                        neon: '#a78bfa',  
+                        success: '#10b981',
+                        line: 'rgba(255, 255, 255, 0.06)'
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(109, 40, 217, 0.5);
+        }
+
+        .crt-line {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            animation: scanline 8s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% {
+                top: 0%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6d28d9;
+        }
+
+        .typewriter::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="selection:bg-accent selection:text-white overflow-x-hidden">
+
+    <div class="fixed inset-0 bg-grid-pattern bg-[size:50px_50px] pointer-events-none z-0"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent/10 blur-[120px] rounded-full pointer-events-none z-0">
+    </div>
+    <div class="crt-line z-50"></div>
+
+    <nav class="fixed top-0 w-full z-50 border-b border-line bg-void/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-2 h-8 bg-accent"></div>
+                <span class="font-sans font-bold tracking-tighter text-xl">razemsb<span
+                        class="text-gray-600">.dev</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 font-mono text-xs text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors">[01] SYSTEM</a>
+                <a href="#projects" class="hover:text-white transition-colors">[02] MODULES</a>
+                <a href="#contact" class="hover:text-white transition-colors">[03] CONNECT</a>
+            </div>
+            <div
+                class="font-mono text-xs text-success flex items-center gap-2 border border-success/20 px-3 py-1 rounded bg-success/5">
+                <span class="w-1.5 h-1.5 bg-success rounded-full animate-pulse"></span>
+                v2.0.4 STABLE
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-20">
+
+        <section
+            class="min-h-[90vh] container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12 py-20 relative">
+
+            <div class="md:w-1/2 space-y-8 z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 border border-accent/30 text-neon font-mono text-xs bg-accent/5 rounded-full">
+                    <i class="fa-solid fa-code"></i> Backend Architect
+                </div>
+
+                <h1 class="font-sans text-5xl md:text-7xl font-bold leading-tight uppercase tracking-tight">
+                    Structured <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-600 text-glow">Logic</span>
+                    <br>
+                    <span class="text-stroke text-transparent"
+                        style="-webkit-text-stroke: 1px rgba(255,255,255,0.3);">Builder</span>
+                </h1>
+
+                <p class="font-mono text-gray-400 max-w-md leading-relaxed border-l-2 border-white/10 pl-6">
+                    <span class="text-accent">public function construct()</span><br>
+                    Проектирую сложные PHP-системы, где чистота кода встречает высокую производительность.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#projects"
+                        class="bg-white text-black px-8 py-4 font-sans font-bold hover:bg-neon transition-colors">
+                        View Projects
+                    </a>
+                    <a href="https://github.com/razemsb" target="_blank"
+                        class="px-8 py-4 border border-white/20 font-mono text-sm hover:border-white transition-colors flex items-center gap-3 bg-white/5">
+                        <i class="fa-brands fa-github text-lg"></i> github
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 w-full relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-accent to-transparent opacity-20 blur transition duration-1000 group-hover:opacity-50">
+                </div>
+
+                <div class="glass-panel w-full rounded-lg overflow-hidden relative shadow-2xl shadow-accent/10">
+                    <div class="bg-white/5 px-4 py-2 flex items-center gap-2 border-b border-white/5">
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        <span class="ml-2 font-mono text-[10px] text-gray-500">razemsb@server:~</span>
+                    </div>
+
+                    <div class="p-6 font-mono text-sm h-[320px] overflow-hidden bg-black/40">
+                        <div id="terminal-content" class="space-y-2">
+                            <div class="text-gray-500">$ init portfolio --verbose</div>
+                            <div class="text-success">✔ Core system loaded</div>
+                            <div class="text-gray-400">> Loading stack: <span class="text-white">PHP 8.2</span></div>
+                            <div class="text-gray-400">> Loading framework: <span class="text-white">Laravel /
+                                    Native</span></div>
+                            <div class="text-gray-400">> Connecting Frontend: <span class="text-white">VueJS 3</span>
+                            </div>
+                            <div class="text-gray-400">> Fetching repos...</div>
+                            <div class="pl-4 border-l border-gray-700 text-gray-300">
+                                -> ImageConvertor... <span class="text-success">OK</span><br>
+                                -> FileManager... <span class="text-success">OK</span><br>
+                                -> WebPlayer... <span class="text-success">OK</span>
+                            </div>
+                            <div class="text-neon mt-4 typewriter">Ready for input...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute -right-4 -bottom-8 glass-panel p-4 border-l-4 border-accent hidden md:block animate-bounce"
+                    style="animation-duration: 3s;">
+                    <div class="font-mono text-[10px] text-gray-500 uppercase">Total commits</div>
+                    <div class="font-sans text-2xl font-bold">1,240+</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="border-y border-line bg-surface/50 overflow-hidden py-4 mb-20">
+            <div class="whitespace-nowrap flex animate-marquee">
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">PHP</span>
+                <span class="mx-8 font-sans font-bold text-white text-4xl opacity-40">OOP</span>
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">MYSQL</span>
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">VUEJS 3</span>
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">TAILWINDCSS</span>
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">BOOTSTRAP</span>
+                <span class="mx-8 font-sans font-bold text-white text-4xl opacity-40">ARCHITECTURE</span>
+                <span class="mx-8 font-sans font-bold text-gray-500 text-4xl opacity-20">GIT</span>
+            </div>
+        </div>
+
+        <section id="about" class="container mx-auto px-6 mb-32">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/3">
+                    <h2 class="font-sans text-3xl font-bold mb-4">System <br><span class="text-accent">Core</span></h2>
+                    <p class="font-mono text-sm text-gray-400 leading-relaxed">
+                        Я не просто пишу код, я строю архитектуру. Мой подход базируется на четком следовании принципам
+                        ООП и разделении ответственности.
+                    </p>
+                </div>
+                <div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-panel p-6 hover:bg-white/5 transition-colors group">
+                        <i
+                            class="fa-solid fa-cubes text-2xl text-gray-600 mb-4 group-hover:text-accent transition-colors"></i>
+                        <h3 class="font-sans font-bold text-lg mb-2">Object Oriented</h3>
+                        <p class="font-mono text-xs text-gray-500">SOLID, DRY, KISS. Строгая типизация и паттерны
+                            проектирования.</p>
+                    </div>
+                    <div class="glass-panel p-6 hover:bg-white/5 transition-colors group">
+                        <i
+                            class="fa-solid fa-database text-2xl text-gray-600 mb-4 group-hover:text-accent transition-colors"></i>
+                        <h3 class="font-sans font-bold text-lg mb-2">Data Integrity</h3>
+                        <p class="font-mono text-xs text-gray-500">Сложные SQL запросы, нормализация БД и оптимизация
+                            индексов.</p>
+                    </div>
+                    <div class="glass-panel p-6 hover:bg-white/5 transition-colors group">
+                        <i
+                            class="fa-brands fa-vuejs text-2xl text-gray-600 mb-4 group-hover:text-accent transition-colors"></i>
+                        <h3 class="font-sans font-bold text-lg mb-2">Modern Frontend</h3>
+                        <p class="font-mono text-xs text-gray-500">VueJS 3 Composition API для создания реактивных
+                            интерфейсов поверх мощного API.</p>
+                    </div>
+                    <div class="glass-panel p-6 hover:bg-white/5 transition-colors group">
+                        <i
+                            class="fa-solid fa-terminal text-2xl text-gray-600 mb-4 group-hover:text-accent transition-colors"></i>
+                        <h3 class="font-sans font-bold text-lg mb-2">CLI Tools</h3>
+                        <p class="font-mono text-xs text-gray-500">Разработка консольных утилит и демонов для фоновой
+                            обработки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container mx-auto px-6 mb-32 relative">
+            <div class="absolute left-6 top-0 bottom-0 w-px bg-white/10 hidden md:block"></div>
+
+            <div class="mb-16 md:pl-12">
+                <span class="font-mono text-accent text-xs tracking-widest uppercase mb-2 block">Repository
+                    Access</span>
+                <h2 class="font-sans text-4xl font-bold">Featured <span class="text-white/40">Work</span></h2>
+            </div>
+
+            <div class="space-y-24">
+
+                <div class="relative md:pl-12 group">
+                    <div
+                        class="absolute left-[21px] top-8 w-3 h-3 bg-black border-2 border-accent rounded-full z-10 hidden md:block group-hover:scale-125 transition-transform">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div class="lg:col-span-7 glass-panel p-8 border-t-4 border-t-accent relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-3 opacity-10">
+                                <i class="fa-solid fa-image text-9xl"></i>
+                            </div>
+                            <div class="flex justify-between items-start mb-6 relative z-10">
+                                <h3 class="font-sans text-2xl font-bold">ImageConvertor</h3>
+                                <a href="https://github.com/razemsb/ImageConvertor"
+                                    class="text-gray-400 hover:text-white"><i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="font-mono text-sm text-gray-300 mb-6 relative z-10">
+                                <p class="mb-4">Backend-сервис для пакетной обработки изображений. Оптимизирован для
+                                    работы с большими объемами данных.</p>
+                                <ul class="list-disc list-inside text-gray-500 space-y-1">
+                                    <li>Конвертация форматов (PNG/JPG/WEBP)</li>
+                                    <li>CLI интерфейс для серверов</li>
+                                    <li>Memory Leak protection</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">PHP
+                                    8.2</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">GD</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 pt-4">
+                            <div class="font-mono text-xs text-gray-500 mb-2">CODE SNIPPET</div>
+                            <div
+                                class="bg-black/50 p-4 rounded border border-white/10 font-mono text-xs text-gray-400 overflow-x-auto">
+                                <pre><span class="text-accent">class</span> Converter {
+  <span class="text-neon">public function</span> process(<span class="text-success">$file</span>) {
+    <span class="text-gray-600">// Memory optimization logic</span>
+    <span class="text-accent">if</span> (!$this->validate($file)) {
+      <span class="text-accent">throw new</span> Exception();
+    }
+    <span class="text-gray-600">// ... processing</span>
+  }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative md:pl-12 group">
+                    <div
+                        class="absolute left-[21px] top-8 w-3 h-3 bg-black border-2 border-white/20 group-hover:border-accent rounded-full z-10 hidden md:block transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div
+                            class="lg:col-span-7 glass-panel p-8 border-t-4 border-t-blue-500 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-3 opacity-10">
+                                <i class="fa-solid fa-folder-tree text-9xl"></i>
+                            </div>
+                            <div class="flex justify-between items-start mb-6 relative z-10">
+                                <h3 class="font-sans text-2xl font-bold">FileManager</h3>
+                                <a href="https://github.com/razemsb/FileManager"
+                                    class="text-gray-400 hover:text-white"><i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="font-mono text-sm text-gray-300 mb-6 relative z-10">
+                                <p class="mb-4">Полноценная система управления файлами. Демонстрация связки мощного ООП
+                                    бэкенда и реактивного фронтенда.</p>
+                                <ul class="list-disc list-inside text-gray-500 space-y-1">
+                                    <li>REST API архитектура</li>
+                                    <li>VueJS 3 Single Page Application</li>
+                                    <li>Файловые операции (Move, Copy, Zip)</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">Vue
+                                    3</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">PHP
+                                    OOP</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">JSON
+                                    API</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 pt-4 flex items-center h-full">
+                            <div class="w-full">
+                                <div class="font-mono text-xs text-gray-500 mb-2">INTERFACE LOGIC</div>
+                                <div class="space-y-2">
+                                    <div class="h-2 bg-blue-900/30 rounded-full w-full overflow-hidden">
+                                        <div class="h-full bg-blue-500 w-3/4"></div>
+                                    </div>
+                                    <div class="flex justify-between font-mono text-[10px] text-gray-400">
+                                        <span>Backend Logic</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="h-2 bg-green-900/30 rounded-full w-full overflow-hidden">
+                                        <div class="h-full bg-green-500 w-1/2"></div>
+                                    </div>
+                                    <div class="flex justify-between font-mono text-[10px] text-gray-400">
+                                        <span>Frontend Reactivity</span>
+                                        <span>50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative md:pl-12 group">
+                    <div
+                        class="absolute left-[21px] top-8 w-3 h-3 bg-black border-2 border-white/20 group-hover:border-accent rounded-full z-10 hidden md:block transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div class="lg:col-span-7 glass-panel p-8 border-t-4 border-t-red-500 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-3 opacity-10">
+                                <i class="fa-solid fa-music text-9xl"></i>
+                            </div>
+                            <div class="flex justify-between items-start mb-6 relative z-10">
+                                <h3 class="font-sans text-2xl font-bold">WebPlayer</h3>
+                                <a href="https://github.com/razemsb/WebPlayer" class="text-gray-400 hover:text-white"><i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="font-mono text-sm text-gray-300 mb-6 relative z-10">
+                                <p class="mb-4">Мультимедийный интерфейс. Глубокая работа с состоянием приложения и
+                                    аудио API браузера.</p>
+                                <ul class="list-disc list-inside text-gray-500 space-y-1">
+                                    <li>Audio Visualizer</li>
+                                    <li>Playlist Management</li>
+                                    <li>Custom Controls UI</li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-2 relative z-10">
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">Vue
+                                    3</span>
+                                <span
+                                    class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono rounded">JS
+                                    Audio</span>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 pt-4">
+                            <div
+                                class="flex items-center justify-center gap-1 h-24 bg-black/40 border border-white/5 rounded">
+                                <div class="w-1 bg-red-500 h-4 animate-pulse"></div>
+                                <div class="w-1 bg-red-500 h-8 animate-pulse" style="animation-delay: 0.1s"></div>
+                                <div class="w-1 bg-red-500 h-12 animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-1 bg-red-500 h-6 animate-pulse" style="animation-delay: 0.3s"></div>
+                                <div class="w-1 bg-red-500 h-10 animate-pulse" style="animation-delay: 0.1s"></div>
+                                <div class="w-1 bg-red-500 h-16 animate-pulse" style="animation-delay: 0.4s"></div>
+                                <div class="w-1 bg-red-500 h-8 animate-pulse" style="animation-delay: 0.2s"></div>
+                            </div>
+                            <div class="font-mono text-center text-[10px] text-gray-500 mt-2">AUDIO STREAM ACTIVE</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer id="contact" class="bg-panel border-t border-line pt-20 pb-10">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    <div>
+                        <h2 class="font-sans text-4xl font-bold mb-6">Initialize<br><span
+                                class="text-accent">Handshake</span></h2>
+                        <p class="font-mono text-gray-400 mb-6 max-w-sm">
+                            Если вам нужен чистый код и предсказуемая архитектура — я на связи.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://t.me/razemsb"
+                                class="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-blue-500 hover:text-white transition-all rounded-full">
+                                <i class="fa-brands fa-telegram text-xl"></i>
+                            </a>
+                            <a href="mailto:razemsb@example.com"
+                                class="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-red-500 hover:text-white transition-all rounded-full">
+                                <i class="fa-solid fa-envelope text-xl"></i>
+                            </a>
+                            <a href="https://github.com/razemsb"
+                                class="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all rounded-full">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="font-mono text-sm space-y-4 text-gray-500 text-right">
+                        <div class="p-4 border border-white/5 bg-black/20 inline-block">
+                            <div class="mb-1 text-xs uppercase tracking-widest text-gray-600">Availability</div>
+                            <div class="flex items-center justify-end gap-2 text-success">
+                                <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                                Open to offers
+                            </div>
+                        </div>
+                        <p>Location: Worldwide / Remote</p>
+                        <p>Timezone: UTC+3</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-gray-600">
+                    <p>&copy; 2025 razemsb. System Normal.</p>
+                    <p>Designed with strict_types=1</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple typewriter effect for terminal
+        const lines = document.querySelectorAll('#terminal-content div');
+
+        // Add random hover glitch effect to headings
+        const headings = document.querySelectorAll('h1, h2');
+        headings.forEach(h => {
+            h.addEventListener('mouseover', () => {
+                h.style.transform = `translate(${Math.random() * 2 - 1}px, ${Math.random() * 2 - 1}px)`;
+                setTimeout(() => h.style.transform = 'translate(0,0)', 100);
+            });
+        });
+    </script>
+</body>
+
+</html>
